@@ -25,3 +25,13 @@ describe("Image exists function to return true for existing file and false for n
         expect(exists).toBe(false);
     }));
 });
+//image resizing function testing
+describe("Image resizing utility to return true for correct sizing and throw error for resize error", function () {
+    it("Existing correct file to be resized return true", () => __awaiter(this, void 0, void 0, function* () {
+        const resize = yield img_utils_1.default.image_resize("images/full/girl.jpg", "images/thumb/girl_201_201.jpg", 201, 201);
+        expect(resize).toBe(true);
+    }));
+    it("Existing defected file to be promise rejected", () => __awaiter(this, void 0, void 0, function* () {
+        expectAsync(img_utils_1.default.image_resize("images/full/defected.jpg", "images/thumb/girl_201_201.jpg", 201, 201)).toBeRejected;
+    }));
+});
